@@ -1,0 +1,336 @@
+/* ===== BASE STYLES ===== */
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scroll-timeline: 5s ease-in-out; /* Adjust time as needed */
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #b41414;
+  color: #333;
+  line-height: 1.6;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== NAVIGATION BAR ===== */
+.container-navB {
+  position: fixed;
+  background: rgb(76, 10, 10);
+  height: 120px;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+nav {
+  padding: 20px 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+#nbry-logo {
+  height: 80px;
+  width: auto;
+
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+#nbry-logo:hover {
+  transform: scale(1.05);
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.3s;
+  position: relative;
+  padding: 5px 0;
+}
+
+nav ul li a:hover {
+  color: #d4a762;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #d4a762;
+  transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menu-icon i {
+  font-size: 30px;
+  color: white;
+}
+
+/* ===== MENU SECTIONS ===== */
+.MainContainer {
+  padding-top: 120px;
+}
+
+.container {
+  box-shadow: 
+  0 2px 4px rgba(0, 0, 0, 0.1),
+  0 4px 8px rgba(0, 0, 0, 0.1),
+  0 8px 16px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 40px auto;
+  width: 90%;
+  max-width: 900px;
+  padding: 40px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.8s ease-out;
+}
+
+h1 {
+  color: rgb(76, 10, 10);
+  margin-bottom: 25px;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h3 {
+  color: #222;
+  font-size: 1.3rem;
+  margin-top: 30px;
+  font-weight: 600;
+}
+
+p {
+  color: #555;
+  max-width: 600px;
+  margin: 10px auto;
+  font-size: 1rem;
+}
+
+#seperation {
+  text-align: center;
+  margin: 30px 0;
+}
+
+#seperation img {
+  max-width: 80%;
+  height: auto;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+@media (max-width: 480px) {
+  nav {
+    padding: 20px 3%;
+  }
+  
+  .container {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-navB {
+    height: 80px;
+  }
+  
+  #nbry-logo {
+    height: 60px;
+  }
+  
+  .MainContainer {
+    padding-top: 80px;
+  }
+  
+  nav ul {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: rgb(76, 10, 10);
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 30px;
+    transition: left 0.3s ease;
+    gap: 0;
+  }
+  
+  nav ul.show {
+    left: 0;
+  }
+  
+  nav ul li {
+    margin: 15px 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  nav ul li a {
+    font-size: 1.2rem;
+    padding: 10px 0;
+    display: block;
+  }
+  
+  .menu-icon {
+    display: block;
+  }
+  
+  .container {
+    width: 95%;
+    padding: 25px;
+    margin: 25px auto;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  #navMenu {
+    display: none; /* Hide menu by default */
+    flex-direction: column;
+    position: fixed; /* Ensure it stays below the navbar */
+    top: 80px; /* Adjust to match the height of your navbar */
+    left: 0;
+    width: 100%;
+    height: auto; /* Prevent it from covering the entire screen */
+    background-color: rgb(76, 10, 10); /* Match the navbar background color */
+    z-index: 1000;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #navMenu.show {
+    display: flex; /* Show menu when toggled */
+  }
+
+  body.no-scroll {
+    overflow: hidden; /* Prevent scrolling when menu is open */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px 15px;
+    margin: 20px auto;
+    width: 98%;
+  }
+  
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+  
+  p {
+    font-size: 0.9rem;
+  }
+  
+  #seperation {
+    margin: 20px 0;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .container-navB {
+    display: none;
+  }
+  
+  .MainContainer {
+    padding-top: 0;
+  }
+  
+  .container {
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    page-break-inside: avoid;
+  }
+  
+  #seperation {
+    display: none;
+  }
+  
+  h1 {
+    page-break-after: avoid;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid #d4a762;
+  outline-offset: 3px;
+}
